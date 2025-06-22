@@ -14,6 +14,10 @@ namespace WebApplication1
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<Application.Interfaces.IDrivingLicenseRepository, Infrastructure.Repositories.InMemoryDrivingLicenseRepository>();
+            builder.Services.AddSingleton<Application.Interfaces.ICategoryRepository, Infrastructure.Repositories.InMemoryCategoryRepository>();
+            builder.Services.AddSingleton<Application.Services.DrivingLicenseService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
